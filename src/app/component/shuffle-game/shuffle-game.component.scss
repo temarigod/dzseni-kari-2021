@@ -1,0 +1,119 @@
+:host {
+  display: block;
+  width: 90vmin;
+  height: 90vmin;
+  position: relative;
+  box-shadow: 0 0 10px 4px #1E792C;
+}
+
+.piece {
+  width: 33.3333%;
+  height: 33.3333%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 24px;
+  background-image: url("/assets/images/gift.webp");
+  background-size: 300% 300%;
+  background-repeat: no-repeat;
+
+  &:nth-child(1) {
+    background-color: blue;
+  }
+
+  &:nth-child(2) {
+    background-color: red;
+    background-position: 50% 0;
+  }
+
+  &:nth-child(3) {
+    background-color: yellow;
+    background-position: 100% 0;
+  }
+
+  &:nth-child(4) {
+    background-color: green;
+    background-position: 0 50%;
+  }
+
+  &:nth-child(5) {
+    background-color: purple;
+    background-position: 50% 50%;
+  }
+
+  &:nth-child(6) {
+    background-color: orange;
+    background-position: 100% 50%;
+  }
+
+  &:nth-child(7) {
+    background-color: grey;
+    background-position: 0 100%;
+  }
+
+  &:nth-child(8) {
+    background-color: pink;
+    background-position: 50% 100%;
+  }
+
+  &:nth-child(9) {
+    cursor: initial;
+    background-image: none;
+  }
+}
+
+.result-image {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 1s;
+  pointer-events: none;
+
+  &.show {
+    z-index: auto;
+    opacity: 1;
+  }
+}
+
+.santa-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -2;
+  opacity: 0;
+  transition: opacity 1s;
+
+  &.show {
+    z-index: auto;
+    opacity: 1;
+  }
+}
+
+.santa {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.code {
+  font-size: 15vmin;
+  position: absolute;
+  left: 37%;
+  bottom: 20%;
+  pointer-events: none;
+}

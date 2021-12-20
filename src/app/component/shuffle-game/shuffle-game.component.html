@@ -1,0 +1,18 @@
+<div
+  class="piece"
+  *ngFor="let piece of pieces"
+  [style.transform]="piece | invoke: getTranslateForPiece:positions"
+  [style.width]="widthOfPiece"
+  [style.height]="widthOfPiece"
+  (click)="onPieceClick(piece)"
+></div>
+<img
+  class="result-image"
+  [class.show]="showResult"
+  src="/assets/images/gift.webp"
+  alt=""
+/>
+<div class="santa-container" [class.show]="showSanta">
+  <img class="santa" src="/assets/images/santa.webp" alt="" />
+  <div class="code" *ngIf="showSanta">6942</div>
+</div>
