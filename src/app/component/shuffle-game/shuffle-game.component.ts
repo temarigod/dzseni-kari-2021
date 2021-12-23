@@ -62,7 +62,6 @@ export class ShuffleGameComponent implements OnInit, OnDestroy {
       shuffledPositions[
         this.randomIntFromInterval(0, shuffledPositions.length - 1)
       ];
-    //this.positions = this.winnerPositions;
   }
 
   ngOnDestroy(): void {
@@ -70,7 +69,8 @@ export class ShuffleGameComponent implements OnInit, OnDestroy {
     this.onDestroy$.complete();
   }
 
-  onPieceClick(piece: number): void {
+  onPieceClick(piece: number, event: Event): void {
+    event.preventDefault();
     if (piece === 0 || this.gameIsWon) {
       return;
     }
@@ -131,26 +131,28 @@ export class ShuffleGameComponent implements OnInit, OnDestroy {
 
   private setWidth$(): void {
     this.ngZone.runOutsideAngular(() => {
-      fromEvent(window, 'resize').pipe(
-        auditTime(0, animationFrameScheduler),
-        startWith(null),
-        map(() => {
-          const width = Math.floor(window.innerWidth * 0.9);
-          const height = Math.floor(window.innerHeight * 0.9);
+      fromEvent(window, 'resize')
+        .pipe(
+          auditTime(0, animationFrameScheduler),
+          startWith(null),
+          map(() => {
+            const width = Math.floor(window.innerWidth * 0.9);
+            const height = Math.floor(window.innerHeight * 0.9);
 
-          const min = Math.min(width, height);
-          const minDividableWith3 = min - (min % 3);
-          return minDividableWith3;
-        }),
-        distinctUntilChanged(),
-        takeUntil(this.onDestroy$)
-      ).subscribe((width) => {
-        this.ngZone.run(() => {
-          this.widthOfPiece = `${width / 3}px`;
-          this.width = `${width}px`;
-          this.cdr.markForCheck();
-        })
-      });
+            const min = Math.min(width, height);
+            const minDividableWith3 = min - (min % 3);
+            return minDividableWith3;
+          }),
+          distinctUntilChanged(),
+          takeUntil(this.onDestroy$)
+        )
+        .subscribe((width) => {
+          this.ngZone.run(() => {
+            this.widthOfPiece = `${width / 3}px`;
+            this.width = `${width}px`;
+            this.cdr.markForCheck();
+          });
+        });
     });
   }
 

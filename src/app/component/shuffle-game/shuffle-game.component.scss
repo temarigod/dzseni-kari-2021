@@ -22,42 +22,31 @@
   background-size: 300% 300%;
   background-repeat: no-repeat;
 
-  &:nth-child(1) {
-    background-color: blue;
-  }
-
   &:nth-child(2) {
-    background-color: red;
     background-position: 50% 0;
   }
 
   &:nth-child(3) {
-    background-color: yellow;
     background-position: 100% 0;
   }
 
   &:nth-child(4) {
-    background-color: green;
     background-position: 0 50%;
   }
 
   &:nth-child(5) {
-    background-color: purple;
     background-position: 50% 50%;
   }
 
   &:nth-child(6) {
-    background-color: orange;
     background-position: 100% 50%;
   }
 
   &:nth-child(7) {
-    background-color: grey;
     background-position: 0 100%;
   }
 
   &:nth-child(8) {
-    background-color: pink;
     background-position: 50% 100%;
   }
 
@@ -111,9 +100,12 @@
 }
 
 .code {
-  font-size: 15vmin;
+  width: 40%;
+  font-size: 7vmin;
   position: absolute;
-  left: 37%;
-  bottom: 20%;
+  left: 53%;
+  transform: translateX(-50%);
+  bottom: 13%;
+  line-height: 1;
   pointer-events: none;
 }

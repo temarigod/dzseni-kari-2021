@@ -4,7 +4,8 @@
   [style.transform]="piece | invoke: getTranslateForPiece:positions"
   [style.width]="widthOfPiece"
   [style.height]="widthOfPiece"
-  (click)="onPieceClick(piece)"
+  (mousedown)="onPieceClick(piece, $event)"
+  (touchstart)="onPieceClick(piece, $event)"
 ></div>
 <img
   class="result-image"
@@ -14,5 +15,5 @@
 />
 <div class="santa-container" [class.show]="showSanta">
   <img class="santa" src="/assets/images/santa.webp" alt="" />
-  <div class="code" *ngIf="showSanta">6942</div>
+  <div class="code" *ngIf="showSanta">Halotti beszéd első mondata fejből</div>
 </div>
